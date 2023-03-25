@@ -1,38 +1,47 @@
-.App {
-  text-align: center;
+:root {
+  --shadow: 0 0.1rem 1.5rem 0 rgb(22 39 86 / 10%);
+  --shadow-2: rgb(0 17 51 / 7%) 0px 3px 15px;
+  --radius: 5px;
+  --font-family: "Varela Round", sans-serif !important;
+  --green: #495E57;
+  --yellow: #F4CE14;
+  --brown: #EE9972;
+  --creem: #FBDABB;
+  --light: #EDEFEE;
+  --dark: #333333;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Varela Round';
+  src: url(assets/fonts/VarelaRound-Regular.ttf);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app {
+  font-family: var(--font-family);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-nav {
+  background-color: var(--light);
+  box-shadow: var(--shadow-2);
 }
 
-.App-link {
-  color: #61dafb;
+.nav-link {
+  color: var(--dark) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-link:hover {
+  color: var(--brown) !important;
+}
+
+
+.login-btn {
+  border: 2px solid var(--yellow) !important;
+  color: var(--dark) !important;
+  transition: all .3s !important;
+}
+
+.login-btn:hover {
+  background-color: var(--brown) !important;
+  border: 2px solid var(--brown) !important;
+  color: var(--light) !important;
 }
