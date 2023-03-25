@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from './components/Header'
-import Menu from './components/Menu'
-import OnlineOrder from './components/OnlineOrder'
-import Reservations from './components/Reservations'
-import About from './components/About'
-import Home from './components/Home'
-
+import Header from './Header'
+import Menu from './Menu'
+import OnlineOrder from './OnlineOrder'
+import Reservations from './Reservations'
+import About from './About'
+import Home from './Home'
 import Login from './Login';
+import Register from './Register'
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -15,6 +15,7 @@ const Routing = () => {
         <>
             <Router>
                 <Header />
+
                 <Routes>
                     <Route path="/" element={< Home />} />
                     <Route path="/about" element={< About />} />
@@ -22,6 +23,7 @@ const Routing = () => {
                     <Route path="/reservations" element={< Reservations />} />
                     <Route path="/onlineorder" element={< OnlineOrder />} />
                     <Route path="/login" element={< Login />} />
+                    <Route path="/register" element={< Register />} />
                 </Routes>
             </Router>
 

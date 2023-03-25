@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from "../assets/images/svg/Logo.svg"
+import logo from "../assets/svg/Logo.svg"
 
 const Header = () => {
     const navItems = [
