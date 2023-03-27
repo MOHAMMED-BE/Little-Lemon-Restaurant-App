@@ -1,8 +1,11 @@
 :root {
   --shadow: 0 0.1rem 1.5rem 0 rgb(22 39 86 / 10%);
   --shadow-2: rgb(0 17 51 / 7%) 0px 3px 15px;
+  --shadow-3: 0 0.3rem 1.8rem 0 rgb(22 39 86 / 40%);
   --radius: 5px;
-  --font-family: "Varela Round", sans-serif !important;
+  --varela-font: "Varela Round", sans-serif !important;
+  --karla-font: 'Karla', sans-serif !important;
+  --markazi-font: 'Markazi Text', serif !important;
   --green: #495E57;
   --yellow: #F4CE14;
   --brown: #EE9972;
@@ -16,8 +19,18 @@
   src: url(assets/fonts/VarelaRound-Regular.ttf);
 }
 
+@font-face {
+  font-family: 'Karla';
+  src: url(assets/fonts/Karla-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Markazi Text';
+  src: url(assets/fonts/MarkaziText-Medium.ttf);
+}
+
 .app {
-  font-family: var(--font-family);
+  font-family: var(--varela-font);
 }
 
 .header-nav {
@@ -76,6 +89,7 @@
 
 .hero .reserve-btn {
   background-color: var(--yellow);
+  padding: 10px 20px !important;
   transition: all .5s !important;
 }
 
@@ -112,8 +126,74 @@
   .hero-image {
     width: 100%;
     height: 90%;
-    border-radius: 15px;
     position: relative;
     margin: 26px 0 0 0 !important;
+  }
+}
+
+
+
+/* Reservation Section */
+
+
+.overlay {
+  background-color: #0000008a;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+}
+
+.reservations {
+  background-image: url('assets/images/restaurant.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  height: 100vh !important;
+  width: 100% !important;
+}
+
+.reservations-card {
+  width: 27% !important;
+  border-radius: 15px !important;
+}
+
+.reserve-image {
+  width: 100% !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow-3) !important;
+}
+
+.confirm-btn{
+  background-color: var(--green) !important;
+  color: #fff !important;
+  transition: all .7s !important;
+}
+
+.confirm-btn:hover{
+  background-color: var(--creem) !important;
+  color: #000 !important;
+}
+
+
+@media screen and (max-width: 1480px) {
+  .reservations-card {
+    width: 42% !important;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .reservations-card {
+    width: 46% !important;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .reservations-card {
+    width: 54% !important;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .reservations-card {
+    width: 75% !important;
   }
 }
