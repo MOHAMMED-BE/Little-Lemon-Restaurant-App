@@ -11,14 +11,14 @@ const Header = () => {
             name: 'Menu'
         },
         {
-            name: 'Reservations'
+            name: 'reservations'
         },
         {
             name: 'Online Order'
         }
     ]
     return (
-        <div className='header-nav d-flex justify-content-center align-items-center'>
+        <div className='header-nav w-100 position-fixed d-flex justify-content-center align-items-center'>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <div className="navbar-brand">

@@ -36,6 +36,7 @@
 .header-nav {
   background-color: var(--light);
   box-shadow: var(--shadow-2);
+  z-index: 999;
 }
 
 .nav-link {
