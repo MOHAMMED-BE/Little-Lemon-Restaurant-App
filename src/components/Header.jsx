@@ -18,7 +18,7 @@ const Header = () => {
         }
     ]
     return (
-        <div className='header-nav w-100 position-fixed d-flex justify-content-center align-items-center'>
+        <div className='header-nav w-100 d-flex justify-content-center align-items-center'>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <div className="navbar-brand">

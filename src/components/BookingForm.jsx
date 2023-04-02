@@ -1,140 +1,166 @@
-import React, { useState } from 'react'
-import image from '../assets/images/greek-salad.jpg'
+import React, { useState } from 'react';
+import image from '../assets/images/greek-salad.jpg';
 import Occasions from '../data/Occasions';
+import { submitAPI } from '../BookingsAPI';
 
-const BookingForm = ({
-  selectedDate,
-  setSelectedDate,
-  availableTimes,
-  dispatch,
-
-}) => {
-
-  const todayDate = new Date();
-  // const today = todayDate.toLocaleDateString('en-CA');
-  const timeNow = todayDate.toLocaleTimeString('en-CA', { hour12: false, hour: 'numeric', minute: 'numeric' });
-
+const BookingForm = (props) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [day, setDay] = useState();
-  const [time, setTime] = useState(timeNow);
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
   const [numberGuests, setNumberGuests] = useState(1);
   const [occasion, setOccasion] = useState('');
-
   const ariaLabel = 'Reserve Table';
 
+  const [finalTime, setFinalTime] = useState(
+    props.availableTimes.map((times) => <option key={times}>{times}</option>)
+  );
 
   function handleDateChange(e) {
-    setSelectedDate(e.target.value);
-    dispatch({
-      type: "UPDATE_TIMES",
-      payload: { date: e.target.value, time }
-    });
+    setDate(e.target.value);
+
+    var stringify = e.target.value;
+    const date = new Date(stringify);
+
+    // Remove last selected time from availableTimes list
+    const filteredTimes = props.availableTimes.filter((t) => t !== time);
+
+    props.updateTimes(date);
+
+    setFinalTime(filteredTimes.map((times) => <option key={times}>{times}</option>));
   }
 
-
-  const seededRandom = function (seed) {
-    var m = 2 ** 35 - 31;
-    var a = 185852;
-    var s = seed % m;
-    return function () {
-      return (s = s * a % m) / m;
-    };
-  }
-
-  const fetchAPI = function (day) {
-    let result = [];
-    let random = seededRandom(day.getDate());
-
-    for (let i = 17; i <= 23; i++) {
-      if (random() < 0.5) {
-        result.push(i + ':00');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (firstName && lastName && date && time && numberGuests && occasion) {
+      const formData = {
+        firstName,
+        lastName,
+        date,
+        time,
+        numberGuests,
+        occasion,
+      };
+      console.log(formData);
+      submitAPI(formData);
+      if (submitAPI) {
+        console.log(true);
       }
-      if (random() < 0.5) {
-        result.push(i + ':30');
+      else {
+        console.log(false);
+
       }
     }
-    return result;
-  };
-
-  const formData = new FormData();
-  formData.append('firstName', firstName);
-  formData.append('lastName', lastName);
-  formData.append('time', time);
-  formData.append('day', day);
-
-  const submitAPI = function (formData) {
-    return true;
   };
 
   return (
     <div className="reservations mt-5 position-absolute">
       <div className="overlay">
-        <div className='mt-5 d-flex justify-content-center'>
-          <div className="card reservations-card ">
+        <div className="mt-5 d-flex justify-content-center">
+          <div className="card reservations-card">
             <div className="container">
               <img src={image} className="card-img-top reserve-image mt-2" alt="restaurant" />
             </div>
             <div className="card-body mt-3 d-flex justify-content-center align-items-center">
-              <form onSubmit={submitAPI}>
+              <form onSubmit={handleSubmit}>
                 <div className="container">
                   <div className="row">
-
                     <div className="col-md-12">
-                      <label htmlFor="" className="form-label">First Name</label>
-                      <input className='form-control mb-3 p-2' type="text" required value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)} name="firstName" id="" placeholder='First Name' />
+                      <label htmlFor="" className="form-label">
+                        First Name
+                      </label>
+                      <input
+                        className="form-control mb-3 p-2"
+                        type="text"
+                        required
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        name="firstName"
+                        id=""
+                        placeholder="First Name"
+                      />
                     </div>
                     <div className="col-md-12">
-                      <label htmlFor="" className="form-label">Last Name</label>
-                      <input className='form-control mb-3 p-2' type="text" required value={lastName}
-                        onChange={(e) => setLastName(e.target.value)} name="lastName" id="" placeholder='Last Name' />
+                      <label htmlFor="" className="form-label">
+                        Last Name
+                      </label>
+                      <input
+                        className="form-control mb-3 p-2"
+                        type="text"
+                        required
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        name="lastName"
+                        id=""
+                        placeholder="Last Name"
+                      />
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="col-6">
-                      <label htmlFor="" className="form-label">Choose date</label>
-                      <input className='form-control mb-3 p-2' type="date"
-                        value={selectedDate}
-                        onChange={(e) => {
-                          handleDateChange();
-                          setDay(e.target.value);
-                        }}
-
-                        name="date" id="" />
+                      <label htmlFor="" className="form-label">
+                        Choose date
+                      </label>
+                      <input
+                        className="form-control mb-3 p-2"
+                        type="date"
+                        value={date}
+                        onChange={handleDateChange}
+                        name="date"
+                        id=""
+                      />
                     </div>
                     <div className="col-6">
-                      <label htmlFor="" className="form-label">Choose time</label>
-                      <select name="time" value={time} className='form-control' id=""
-                        onChange={(e) => {
-                          setTime(e.target.value);
-                        }}>
-                        <option value="" disabled>Choose time</option>
-                        {
-                          availableTimes.map((item) => {
-                            return <option key={item.time} value={item.time}>{item.time}</option>
-                          })
-                        }
+                      <label htmlFor="" className="form-label">
+                        Choose time
+                      </label>
+                      <select
+                        className="form-control mb-3 p-2"
+                        id="time"
+                        name="time"
+                        value={time}
+                        onChange={(e) => setTime(e.target.value)}
+                        required
+                      >
+                        <option value="" disabled>
+                          Choose time
+                        </option>
+                        {finalTime}
                       </select>
                     </div>
                   </div>
 
                   <div className="row">
                     <div className="col-6">
-                      <label htmlFor="" className="form-label">Number of guests</label>
-                      <input className='form-control mb-3 p-2' type="text" required value={numberGuests}
-                        onChange={(e) => setNumberGuests(e.target.value)} name="numberOfGuests" id="" />
+                      <label htmlFor="" className="form-label">
+                        Number of guests
+                      </label>
+                      <input
+                        className='form-control mb-3 p-2'
+                        type="text"
+                        required
+                        value={numberGuests}
+                        onChange={(e) => setNumberGuests(e.target.value)}
+                        name="numberOfGuests" id="" />
                     </div>
 
                     <div className="col-6">
                       <label htmlFor="" className="form-label">Occasion</label>
-                      <select name="occasion" value={occasion} className='form-control' id=""
+                      <select
+                        name="occasion"
+                        value={occasion}
+                        className='form-control' id=""
                         onChange={(e) => setOccasion(e.target.value)}>
+
                         <option value="" disabled>Select an Occasion</option>
                         {
                           Occasions.map((option) => {
-                            return <option key={option.name} value={option.name}>{option.name}</option>
+                            return <option
+                              key={option.name}
+                              value={option.name}>
+                              {option.name}
+                            </option>
 
                           })
                         }
