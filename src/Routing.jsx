@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './components/Header';
+// import Header from './components/Header';
 import Menu from './components/Menu';
 import OnlineOrder from './components/OnlineOrder';
 import Reservations from './components/Reservations';
@@ -14,7 +14,6 @@ const Routing = () => {
   return (
     <>
       <Router>
-        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

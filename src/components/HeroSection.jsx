@@ -15,7 +15,7 @@ const HeroSection = () => {
             <h2>Little Lemon</h2>
             <h3>Chicago</h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat quis provident aliquam pariatur dolore placeat ducimus hic! Illum, unde cumque?
+            Little Lemon Restaurant - Serving fresh and delicious food made with locally-sourced ingredients. Come dine with us today!
             </p>
             <button onClick={reserveTable} className="btn reserve-btn">Reserve a Table</button>
           </div>

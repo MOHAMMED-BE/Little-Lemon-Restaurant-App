@@ -12,6 +12,8 @@
   --creem: #FBDABB;
   --light: #EDEFEE;
   --dark: #333333;
+  --transition: all .7s !important;
+  --border-radius-img: 15px !important;
 }
 
 @font-face {
@@ -51,7 +53,7 @@
 .login-btn {
   border: 2px solid var(--green) !important;
   color: var(--dark) !important;
-  transition: all .7s !important;
+  transition: var(--transition) !important;
 }
 
 .login-btn:hover {
@@ -88,21 +90,21 @@
   width: 18rem;
 }
 
-.hero .reserve-btn {
-  background-color: var(--yellow);
+.reserve-btn {
+  background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  transition: all .5s !important;
+  transition: var(--transition) !important;
 }
 
-.hero .reserve-btn:hover {
-  background-color: var(--creem);
-  color: #000;
+.reserve-btn:hover {
+  background-color: var(--creem) !important;
+  color: #000 !important;
 }
 
 .hero-image {
   width: 260px;
   height: 20rem;
-  border-radius: 15px;
+  border-radius: var(--border-radius-img) !important;
   position: absolute;
   margin: 1rem 0 0 0;
 }
@@ -154,7 +156,7 @@
 
 .reservations-card {
   width: 27% !important;
-  border-radius: 15px !important;
+  border-radius: var(--border-radius-img) !important;
 }
 
 .reserve-image {
@@ -163,15 +165,15 @@
   box-shadow: var(--shadow-3) !important;
 }
 
-.confirm-btn{
-  background-color: var(--green) !important;
-  color: #fff !important;
-  transition: all .7s !important;
+.confirm-btn {
+  background-color: var(--yellow) !important;
+  color: var(--dark) !important;
+  transition: var(--transition) !important;
 }
 
-.confirm-btn:hover{
-  background-color: var(--creem) !important;
-  color: #000 !important;
+.confirm-btn:hover {
+  background-color: var(--green) !important;
+  color: var(--light) !important;
 }
 
 
@@ -197,4 +199,143 @@
   .reservations-card {
     width: 75% !important;
   }
+
+  .reserve-image {
+    height: 17rem !important;
+  }
+}
+
+
+/* Specials */
+
+
+.specials-container {
+  width: 100% !important;
+  margin: 10rem 0 0 0 !important;
+  color: var(--dark) !important;
+}
+
+.specials-card {
+  box-shadow: var(--shadow-2);
+  border-radius: 10px !important;
+  border: none !important;
+  height: 37rem !important;
+  transition: var(--transition) !important;
+  margin-bottom: 3rem !important;
+}
+
+.last-card {
+  margin: 0 0 17rem 0 !important;
+}
+
+.phone-last-card {
+  margin: 0 0 27rem 0 !important;
+}
+
+.specials-card:hover {
+  transform: scale(1.05);
+}
+
+.online-menu-btn {
+  background-color: var(--yellow) !important;
+  padding: 10px 20px !important;
+  transition: var(--transition) !important;
+}
+
+.online-menu-btn:hover {
+  background-color: var(--green) !important;
+  color: var(--light) !important;
+}
+
+.specials-image {
+  width: 100%;
+}
+
+.order-btn {
+  background-color: var(--yellow) !important;
+  bottom: 1rem !important;
+  position: absolute !important;
+  transition: var(--transition) !important;
+}
+
+.order-btn:hover {
+  background-color: var(--green) !important;
+  color: var(--light) !important;
+}
+
+.top-image {
+  width: 100% !important;
+  padding: 0.7rem !important;
+}
+
+
+.specials-card-img-top {
+  height: 17rem !important;
+  border-bottom-left-radius: var(--border-radius-img) !important;
+  border-bottom-right-radius: var(--border-radius-img) !important;
+
+}
+
+
+.specials-price {
+  color: var(--brown);
+}
+
+.specials-title {
+  color: var(--green);
+}
+
+.specials-desc {
+  overflow: hidden !important;
+  position: absolute !important;
+  width: 95% !important;
+}
+
+
+@media screen and (max-width: 1200px) {
+  .specials-card-img-top {
+    height: 28rem !important;
+  }
+
+  .specials-card {
+    height: 45rem !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .specials-card-img-top {
+    height: 23rem !important;
+  }
+
+  .specials-card {
+    height: 40rem !important;
+  }
+}
+
+
+@media screen and (max-width: 770px) {
+  .specials-card-img-top {
+    height: 18rem !important;
+  }
+
+  .specials-card {
+    height: 36rem !important;
+  }
+}
+
+
+
+
+/* Footer */
+
+
+footer {
+  background-color: var(--green) !important;
+  box-shadow: var(--shadow-3);
+  transition: var(--transition) !important;
+}
+
+.footer-logo {
+  height: 9rem !important;
+  border-radius: 5px !important;
 }
