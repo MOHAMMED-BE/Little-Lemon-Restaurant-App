@@ -1,28 +1,38 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image from '../assets/images/greek-salad.jpg';
 import Occasions from '../data/Occasions';
-import { submitAPI } from '../BookingsAPI';
+import * as yup from "yup";
+import { useFormik } from "formik";
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 const BookingForm = (props) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+
+  const navigate = useNavigate();
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [numberGuests, setNumberGuests] = useState(1);
-  const [occasion, setOccasion] = useState('');
   const ariaLabel = 'Reserve Table';
+  const MySwal = withReactContent(Swal);
+
+  const occasionOptions = Occasions.map((option) => option.name);
+
+  const validationSchema = yup.object({
+    firstName: yup.string().required("First Name is required"),
+    lastName: yup.string().required("Last Name is required"),
+    numberGuests: yup.number().min(1, 'Must be at least 1 guest').max(10, 'Must be at most 10 guests').required('Number Of Guests is required'),
+    occasion: yup.string().oneOf(occasionOptions, "Invalid option").required("Invalid option"),
+  });
 
   const [finalTime, setFinalTime] = useState(
     props.availableTimes.map((times) => <option key={times}>{times}</option>)
   );
 
   function handleDateChange(e) {
-    setDate(e.target.value);
+    const selectedDate = e.target.value;
+    setDate(selectedDate);
 
-    var stringify = e.target.value;
-    const date = new Date(stringify);
-
-    // Remove last selected time from availableTimes list
+    const date = new Date(selectedDate);
     const filteredTimes = props.availableTimes.filter((t) => t !== time);
 
     props.updateTimes(date);
@@ -30,28 +40,47 @@ const BookingForm = (props) => {
     setFinalTime(filteredTimes.map((times) => <option key={times}>{times}</option>));
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (firstName && lastName && date && time && numberGuests && occasion) {
-      const formData = {
-        firstName,
-        lastName,
-        date,
-        time,
-        numberGuests,
-        occasion,
-      };
-      console.log(formData);
-      submitAPI(formData);
-      if (submitAPI) {
-        console.log(true);
-      }
-      else {
-        console.log(false);
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      numberGuests: "",
+      occasion: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      const data = { ...values, date, time };
 
+      props.submitForm(data);
+      if (props.submitForm) {
+        const result = await MySwal.fire({
+          title: 'You have successfully confirmed your reservation.',
+          text: "You can't edit or retract your booking anymore.",
+          icon: 'success',
+          confirmButtonText: 'Close',
+        });
+
+        if (result.isConfirmed) {
+          console.log(true);
+          console.log(data);
+          navigate('/');
+        }
+        else {
+          console.log(false);
+        }
       }
-    }
-  };
+    },
+  });
+
+  const {
+    touched,
+    errors,
+    values,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = formik;
+
 
   return (
     <div className="reservations mt-5 position-absolute">
@@ -69,46 +98,65 @@ const BookingForm = (props) => {
                       <label htmlFor="" className="form-label">
                         First Name
                       </label>
+
                       <input
-                        className="form-control mb-3 p-2"
                         type="text"
-                        required
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        id="firstName"
                         name="firstName"
-                        id=""
                         placeholder="First Name"
+                        className={
+                          touched.firstName && errors.firstName
+                            ? "form-control is-invalid"
+                            : "form-control mb-2"
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstName}
                       />
+                      {touched.firstName && errors.firstName ? (
+                        <div className="invalid-feedback">{errors.firstName}</div>
+                      ) : null}
                     </div>
+
                     <div className="col-md-12">
                       <label htmlFor="" className="form-label">
                         Last Name
                       </label>
                       <input
-                        className="form-control mb-3 p-2"
+                        className={`
+                          ${touched.lastName && errors.lastName
+                            ? 'form-control is-invalid'
+                            : 'form-control'
+                          }
+                        `}
                         type="text"
                         required
-                        value={lastName}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={values.lastName}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
                         name="lastName"
                         id=""
                         placeholder="Last Name"
                       />
+                      {touched.lastName && errors.lastName ? (
+                        <div className="invalid-feedback">{errors.lastName}</div>
+                      ) : null}
                     </div>
                   </div>
 
-                  <div className="row">
+                  <div className="row mt-2">
                     <div className="col-6">
                       <label htmlFor="" className="form-label">
                         Choose date
                       </label>
                       <input
-                        className="form-control mb-3 p-2"
+                        className="form-control mb-2 p-2"
                         type="date"
                         value={date}
                         onChange={handleDateChange}
                         name="date"
                         id=""
+                        min={new Date().toISOString().split('T')[0]}
                       />
                     </div>
                     <div className="col-6">
@@ -116,7 +164,7 @@ const BookingForm = (props) => {
                         Choose time
                       </label>
                       <select
-                        className="form-control mb-3 p-2"
+                        className="form-control mb-2 p-2"
                         id="time"
                         name="time"
                         value={time}
@@ -131,40 +179,53 @@ const BookingForm = (props) => {
                     </div>
                   </div>
 
-                  <div className="row">
+                  <div className="row mb-3">
                     <div className="col-6">
                       <label htmlFor="" className="form-label">
                         Number of guests
                       </label>
                       <input
-                        className='form-control mb-3 p-2'
-                        type="text"
-                        required
-                        value={numberGuests}
-                        onChange={(e) => setNumberGuests(e.target.value)}
-                        name="numberOfGuests" id="" />
+                        type="number"
+                        id="numberGuests"
+                        name="numberGuests"
+                        placeholder="Number Guests"
+                        className={
+                          touched.numberGuests && errors.numberGuests
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.numberGuests}
+                      />
+                      {touched.numberGuests && errors.numberGuests ? (
+                        <div className="invalid-feedback">{errors.numberGuests}</div>
+                      ) : null}
                     </div>
 
                     <div className="col-6">
                       <label htmlFor="" className="form-label">Occasion</label>
                       <select
+                        className={
+                          touched.occasion && errors.occasion
+                            ? "form-control is-invalid"
+                            : "form-control"
+                        }
                         name="occasion"
-                        value={occasion}
-                        className='form-control' id=""
-                        onChange={(e) => setOccasion(e.target.value)}>
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.occasion}>
 
                         <option value="" disabled>Select an Occasion</option>
-                        {
-                          Occasions.map((option) => {
-                            return <option
-                              key={option.name}
-                              value={option.name}>
-                              {option.name}
-                            </option>
-
-                          })
-                        }
+                        {occasionOptions.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
                       </select>
+                      {touched.occasion && errors.occasion ? (
+                        <div className="invalid-feedback">{errors.occasion}</div>
+                      ) : null}
                     </div>
                   </div>
 

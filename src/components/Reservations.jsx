@@ -18,7 +18,8 @@ const Reservations = () => {
         <>
             <BookingForm
                 availableTimes={availableTimes}
-                updateTimes={dispatch} />
+                updateTimes={dispatch}
+                submitForm={submitForm} />
         </>
     );
 }
