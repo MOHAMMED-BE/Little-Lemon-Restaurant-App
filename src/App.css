@@ -31,6 +31,18 @@
   src: url(assets/fonts/MarkaziText-Medium.ttf);
 }
 
+*{
+  transition: var(--transition) !important;
+}
+
+.hero-image,
+.reserve-image,
+.specials-image,
+.specials-card-img-top,
+.menu-img{
+  box-shadow: var(--shadow-3) !important;
+}
+
 .app {
   font-family: var(--varela-font);
 }
@@ -51,49 +63,48 @@
 }
 
 @media screen and (max-width: 990px) {
-  .navbar-nav,.nav-item{
+
+  .navbar-nav,
+  .nav-item {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
   }
 
-  .nav-item{
+  .nav-item {
     border: 2px solid var(--green) !important;
     border-radius: 5px;
     width: 20rem !important;
     margin: 0.5rem 0 0 0 !important;
     cursor: pointer;
-    transition: var(--transition) !important;
+    
   }
 
-  .nav-item:hover{
+  .nav-item:hover {
     background-color: var(--green);
   }
 
-  .nav-item:hover .nav-link{
+  .nav-item:hover .nav-link {
     color: var(--light) !important;
   }
 
-  .nav-item:last-child{
+  .nav-item:last-child {
     margin-left: 0 !important;
     border: none !important
   }
 
-  .login-btn{
+  .login-btn {
     width: 20rem;
   }
-
 }
-
 
 
 /* Login */
 
-
 .login-btn {
   border: 2px solid var(--green) !important;
   color: var(--dark) !important;
-  transition: var(--transition) !important;
+  
 }
 
 .login-btn:hover {
@@ -106,12 +117,14 @@
 .login-card {
   width: 61rem !important;
   height: 80vh !important;
-
 }
 
 .login-card-img {
   height: 80vh !important;
+}
 
+.login-img {
+  width: 78% !important;
 }
 
 
@@ -133,12 +146,12 @@
 .reserve-btn {
   background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  transition: var(--transition) !important;
+  
 }
 
 .reserve-btn:hover {
   background-color: var(--creem) !important;
-  color: #000 !important;
+  color: var(--dark) !important;
 }
 
 .hero-image {
@@ -157,7 +170,6 @@
     margin: 4rem 0 0 3.4rem;
   }
 }
-
 
 @media screen and (max-width: 575px) {
   .hero {
@@ -178,7 +190,7 @@
 /* Reservation Section */
 
 .overlay {
-  background-color: #0000008a;
+  background-color: #000000b6;
   width: 100%;
   height: 100vh;
   position: absolute;
@@ -201,20 +213,18 @@
 .reserve-image {
   width: 100% !important;
   border-radius: 10px !important;
-  box-shadow: var(--shadow-3) !important;
 }
 
 .confirm-btn {
   background-color: var(--yellow) !important;
   color: var(--dark) !important;
-  transition: var(--transition) !important;
+  
 }
 
 .confirm-btn:hover {
   background-color: var(--green) !important;
   color: var(--light) !important;
 }
-
 
 @media screen and (max-width: 1480px) {
   .reservations-card {
@@ -257,7 +267,6 @@
 
 /* Specials */
 
-
 .specials-container {
   width: 100% !important;
   margin: 10rem 0 0 0 !important;
@@ -269,7 +278,7 @@
   border-radius: 10px !important;
   border: none !important;
   height: 37rem !important;
-  transition: var(--transition) !important;
+  
   margin-bottom: 3rem !important;
 }
 
@@ -288,7 +297,7 @@
 .online-menu-btn {
   background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  transition: var(--transition) !important;
+  
 }
 
 .online-menu-btn:hover {
@@ -300,14 +309,24 @@
   width: 100%;
 }
 
+.online-menu-btn,
 .order-btn {
   background-color: var(--yellow) !important;
-  bottom: 1rem !important;
-  position: absolute !important;
-  transition: var(--transition) !important;
+  padding: 10px 20px !important;
+  
 }
 
-.order-btn:hover {
+.online-menu-btn {
+  padding: 10px 20px !important;
+}
+
+.order-btn {
+  bottom: 1rem !important;
+  position: absolute !important;
+}
+
+.order-btn:hover,
+.online-menu-btn:hover {
   background-color: var(--green) !important;
   color: var(--light) !important;
 }
@@ -317,14 +336,13 @@
   padding: 0.7rem !important;
 }
 
-
 .specials-card-img-top {
+  width: 100% !important;
+  border-radius: 10px !important;
   height: 17rem !important;
   border-bottom-left-radius: var(--border-radius-img) !important;
   border-bottom-right-radius: var(--border-radius-img) !important;
-
 }
-
 
 .specials-price {
   color: var(--brown);
@@ -339,7 +357,6 @@
   position: absolute !important;
   width: 95% !important;
 }
-
 
 @media screen and (max-width: 1200px) {
   .specials-card-img-top {
@@ -361,7 +378,6 @@
   }
 }
 
-
 @media screen and (max-width: 770px) {
   .specials-card-img-top {
     height: 18rem !important;
@@ -372,27 +388,7 @@
   }
 }
 
-
-
-
-/* Footer */
-
-
-footer {
-  background-color: var(--green) !important;
-  box-shadow: var(--shadow-3);
-  transition: var(--transition) !important;
-}
-
-.footer-logo {
-  height: 9rem !important;
-  border-radius: 5px !important;
-}
-
-
-
 /* Menu */
-
 
 .menu-container {
   height: 100vh !important;
@@ -403,13 +399,11 @@ footer {
 }
 
 .menu-img {
-  box-shadow: var(--shadow-3);
   transform: scale(85%) !important;
   margin: -3rem 0 0 0 !important;
 }
 
 .menu-img-2 {
-  box-shadow: var(--shadow-3);
   transform: scale(75%) !important;
   margin: -3rem 0 0 0 !important;
 }
@@ -430,4 +424,17 @@ footer {
   .menu-img-2 {
     transform: scale(95%) !important;
   }
+}
+
+
+/* Footer */
+
+footer {
+  background-color: var(--green) !important;
+  
+}
+
+.footer-logo {
+  height: 9rem !important;
+  border-radius: 5px !important;
 }

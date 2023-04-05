@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import image from '../assets/images/greek-salad.jpg';
 import Occasions from '../data/Occasions';
@@ -54,8 +55,8 @@ const BookingForm = (props) => {
       props.submitForm(data);
       if (props.submitForm) {
         const result = await MySwal.fire({
-          title: 'You have successfully confirmed your reservation.',
-          text: "You can't edit or retract your booking anymore.",
+          title: 'You have successfully confirmed your reservation',
+          text: "You can't edit or retract your booking anymore",
           icon: 'success',
           confirmButtonText: 'Close',
         });
@@ -231,7 +232,7 @@ const BookingForm = (props) => {
 
                 </div>
                 <div className="row mx-5 d-flex justify-content-center align-items-center">
-                  <button type="submit" className='btn py-2 confirm-btn' aria-label={ariaLabel}>{ariaLabel}</button>
+                  <Button className='py-2 confirm-btn' ariaLabel={ariaLabel} />
                 </div>
               </form>
             </div>

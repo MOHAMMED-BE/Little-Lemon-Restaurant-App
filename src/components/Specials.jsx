@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import Button from './Button';
 import { useNavigate } from 'react-router-dom';
-
 import SpecialsList from '../data/SpecialsList'
 
 const Specials = () => {
 
     const navigate = useNavigate();
+    const ariaLabel = "Online Menu";
+    const cardAriaLabel = "Order a delivery";
+
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -16,7 +19,7 @@ const Specials = () => {
 
     const showMenu = () => {
         navigate('/menu');
-      }
+    }
 
     return (
         <div className='specials-container position-absolute '>
@@ -26,7 +29,7 @@ const Specials = () => {
                         <h2>This week specials! {windowWidth}</h2>
                     </div>
                     <div className='col-md-3'>
-                        <button onClick={showMenu} className='btn online-menu-btn'>Online Menu</button>
+                        <Button btnClick={showMenu} className='online-menu-btn' ariaLabel={ariaLabel} />
                     </div>
                 </div>
                 <div className="container">
@@ -50,7 +53,7 @@ const Specials = () => {
                                     ${item.title === 'Lemon Desert' ? 'last-card' : ''}
                                     ${windowWidth < 770 && item.title === 'Lemon Desert' ? 'phone-last-card' : ''}`}>
                                         <div className="top-image">
-                                            <img src={item.image} className="specials-card-img-top reserve-image" alt="restaurant" />
+                                            <img src={item.image} className="specials-card-img-top" alt="restaurant" />
                                         </div>
                                         <div className="card-body mt-3">
                                             <div className="container card-container">
@@ -67,7 +70,7 @@ const Specials = () => {
                                                 </div>
                                                 <div className="row">
                                                     <div className="col-md-10 ">
-                                                        <button className='btn order-btn ' type="submit">Order a delivery</button>
+                                                        <Button className='order-btn' ariaLabel={cardAriaLabel} />
                                                     </div>
                                                 </div>
                                             </div>

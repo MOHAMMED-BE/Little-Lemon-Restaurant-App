@@ -9,7 +9,7 @@ const Footer = () => {
             const scrollPosition = window.scrollY;
             const pageHeight = document.documentElement.scrollHeight;
             const windowHeight = window.innerHeight;
-            const middleOfPage = pageHeight / 1.7 - windowHeight / 5;
+            const middleOfPage = pageHeight / 2 - windowHeight / 3;
 
             setShowFooter(scrollPosition > middleOfPage);
         };

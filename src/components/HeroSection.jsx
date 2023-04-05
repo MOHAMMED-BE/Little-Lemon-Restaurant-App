@@ -1,9 +1,12 @@
 import React from 'react'
+import Button from './Button';
 import { useNavigate } from 'react-router-dom'
-import heroImage from '../assets/images/restauranfood.jpg'
+import heroImage from '../assets/images/restauranfood.png'
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const ariaLabel = "Reserve a Table";
+
   const reserveTable = () => {
     navigate('/reservations');
   }
@@ -15,9 +18,9 @@ const HeroSection = () => {
             <h2>Little Lemon</h2>
             <h3>Chicago</h3>
             <p>
-            Little Lemon Restaurant - Serving fresh and delicious food made with locally-sourced ingredients. Come dine with us today!
+              Little Lemon Restaurant - Serving fresh and delicious food made with locally-sourced ingredients. Come dine with us today!
             </p>
-            <button onClick={reserveTable} className="btn reserve-btn">Reserve a Table</button>
+            <Button btnClick={reserveTable} className='reserve-btn' ariaLabel={ariaLabel} />
           </div>
           <div className="col-md-6 col-lg-6 col-sm-6">
             <img src={heroImage} className='hero-image' alt="restaurant food" />

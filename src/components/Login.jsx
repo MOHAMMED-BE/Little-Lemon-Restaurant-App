@@ -1,64 +1,135 @@
-import React from 'react';
-import bgImage from "../assets/images/restauranfood.jpg"
-import { Link } from 'react-router-dom';
-import logo from "../assets/svg/Logo.svg"
-import {
-    MDBBtn,
-    MDBContainer,
-    MDBCard,
-    MDBCardBody,
-    MDBCardImage,
-    MDBRow,
-    MDBCol,
-    MDBIcon,
-    MDBInput
+import React, { useEffect } from 'react';
+import Button from './Button';
+import { Link, useNavigate } from 'react-router-dom';
+import * as yup from "yup";
+import { useFormik } from "formik";
+import Swal from 'sweetalert2';
+import image from '../assets/images/login-img-3.jpg';
+
+const Login = () => {
+
+  const navigate = useNavigate();
+  const ariaLabel = 'Login';
+
+  useEffect(() => {
+    if (localStorage.getItem('user-info')) {
+      navigate('/');
+    }
+  }, [navigate]);
+
+  const validationSchema = yup.object({
+    email: yup.string().email('Invalid email').required('Please enter an email'),
+    password: yup.string().min(5, 'Must be at least 5 characters').max(20, 'Must be at most 20 characters').required('Password is required'),
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: async (values) => {
+      const result = await Swal.fire({
+        title: 'You are successfully logged in',
+        icon: 'success',
+        confirmButtonText: 'Close',
+      });
+
+      if (result.isConfirmed) {
+        localStorage.setItem('user-info', JSON.stringify(values));
+        navigate('/');
+      }
+      else {
+        console.log(false);
+      }
+    },
+  });
+
+  const {
+    touched,
+    errors,
+    values,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = formik;
+
+  return (
+    <div className="reservations position-absolute">
+      <div className="overlay">
+        <div className="mt-5 d-flex justify-content-center">
+          <div className="card reservations-card">
+            <div className="container d-flex justify-content-center align-items-center">
+              <img src={image} className="card-img-top login-img mt-2" alt="restaurant" />
+            </div>
+            <div className="card-body mt-3 d-flex justify-content-center align-items-center">
+              <form onSubmit={handleSubmit}>
+                <div className="container ">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <label htmlFor="" className="form-label">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        required
+                        name="email"
+                        placeholder="Email"
+                        className={
+                          touched.email && errors.email
+                            ? "form-control is-invalid"
+                            : "form-control mb-2"
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.email}
+                      />
+                      {touched.email && errors.email ? (
+                        <div className="invalid-feedback">{errors.email}</div>
+                      ) : null}
+                    </div>
+
+                    <div className="col-md-12">
+                      <label htmlFor="" className="form-label">
+                        Password
+                      </label>
+                      <input
+                        type="password"
+                        required
+                        name="password"
+                        id=""
+                        placeholder="Password"
+                        className={
+                          touched.password && errors.password
+                            ? "form-control is-invalid"
+                            : "form-control mb-2"
+                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.password}
+                      />
+                      {touched.password && errors.password ? (
+                        <div className="invalid-feedback">{errors.password}</div>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="col-md-12 mt-2">
+                    <p className="pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <Link className='nav-link d-inline text-primary' to='/register'>Register here</Link></p>
+                  </div>
+
+                </div>
+                <div className="row mx-5 d-flex justify-content-center align-items-center">
+                  <Button className='py-2 confirm-btn' ariaLabel={ariaLabel} />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
-    from 'mdb-react-ui-kit';
 
-
-function Login() {
-    return (
-        <>
-            <MDBContainer className="my-5 d-flex justify-content-center align-items-center">
-
-                <MDBCard className='login-card'>
-                    <MDBRow className='g-0'>
-
-                        <MDBCol md='6'>
-                            <MDBCardImage src={bgImage} alt="login form" className='rounded-start w-100 h-100 login-card-img' />
-                        </MDBCol>
-
-                        <MDBCol md='6'>
-                            <MDBCardBody className='d-flex flex-column'>
-
-                                <div className='d-flex flex-row mt-2'>
-                                    <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }} />
-                                    <img src={logo} alt="logo" />
-                                </div>
-
-                                <h5 className="fw-normal my-4 pb-3" style={{ letterSpacing: '1px' }}>Sign into your account</h5>
-
-                                <MDBInput className='mb-4' label='Email address' id='formControl-email' type='email' size="lg" />
-                                <MDBInput wrapperClass='mb-4' label='Password' id='formControl-password' type='password' size="lg" />
-
-                                <MDBBtn className="mb-4 px-5" color='dark' size='lg'>Login</MDBBtn>
-                                <a className="small text-muted" href="#!">Forgot password?</a>
-                                <p className="mb-5 pb-lg-2" style={{ color: '#393f81' }}>Don't have an account? <Link className='nav-link d-inline text-primary' to='/register'>Register here</Link></p>
-
-                                <div className='d-flex flex-row justify-content-start'>
-                                    <a href="#!" className="small text-muted me-1">Terms of use.</a>
-                                    <a href="#!" className="small text-muted">Privacy policy</a>
-                                </div>
-
-                            </MDBCardBody>
-                        </MDBCol>
-
-                    </MDBRow>
-                </MDBCard>
-
-            </MDBContainer>
-        </>
-    );
-}
-
-export default Login;
+export default Login
