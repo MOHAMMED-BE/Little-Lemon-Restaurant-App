@@ -83,7 +83,7 @@ const BookingForm = (props) => {
 
 
   return (
-    <div className="reservations mt-5 position-absolute">
+    <div className="reservations position-absolute">
       <div className="overlay">
         <div className="mt-5 d-flex justify-content-center">
           <div className="card reservations-card">

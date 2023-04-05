@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import SpecialsList from '../data/SpecialsList'
 
 const Specials = () => {
 
+    const navigate = useNavigate();
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     useEffect(() => {
@@ -10,6 +13,10 @@ const Specials = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+    const showMenu = () => {
+        navigate('/menu');
+      }
 
     return (
         <div className='specials-container position-absolute '>
@@ -19,7 +26,7 @@ const Specials = () => {
                         <h2>This week specials! {windowWidth}</h2>
                     </div>
                     <div className='col-md-3'>
-                        <button className='btn online-menu-btn'>Online Menu</button>
+                        <button onClick={showMenu} className='btn online-menu-btn'>Online Menu</button>
                     </div>
                 </div>
                 <div className="container">

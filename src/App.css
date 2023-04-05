@@ -36,9 +36,10 @@
 }
 
 .header-nav {
+  position: relative;
   background-color: var(--light);
   box-shadow: var(--shadow-2);
-  z-index: 999;
+  z-index: 9999;
 }
 
 .nav-link {
@@ -48,6 +49,45 @@
 .nav-link:hover {
   color: var(--brown) !important;
 }
+
+@media screen and (max-width: 990px) {
+  .navbar-nav,.nav-item{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .nav-item{
+    border: 2px solid var(--green) !important;
+    border-radius: 5px;
+    width: 20rem !important;
+    margin: 0.5rem 0 0 0 !important;
+    cursor: pointer;
+    transition: var(--transition) !important;
+  }
+
+  .nav-item:hover{
+    background-color: var(--green);
+  }
+
+  .nav-item:hover .nav-link{
+    color: var(--light) !important;
+  }
+
+  .nav-item:last-child{
+    margin-left: 0 !important;
+    border: none !important
+  }
+
+  .login-btn{
+    width: 20rem;
+  }
+
+}
+
+
+
+/* Login */
 
 
 .login-btn {
@@ -135,9 +175,7 @@
 }
 
 
-
 /* Reservation Section */
-
 
 .overlay {
   background-color: #0000008a;
@@ -157,6 +195,7 @@
 .reservations-card {
   width: 27% !important;
   border-radius: var(--border-radius-img) !important;
+  transform: scale(90%);
 }
 
 .reserve-image {
@@ -197,11 +236,21 @@
 
 @media screen and (max-width: 780px) {
   .reservations-card {
-    width: 75% !important;
+    width: 67% !important;
   }
 
   .reserve-image {
-    height: 17rem !important;
+    height: 19rem !important;
+  }
+}
+
+@media screen and (max-width: 680px) and (min-width: 480px) {
+  .reservations-card {
+    width: 77% !important;
+  }
+
+  .reserve-image {
+    height: 16rem !important;
   }
 }
 
@@ -338,4 +387,47 @@ footer {
 .footer-logo {
   height: 9rem !important;
   border-radius: 5px !important;
+}
+
+
+
+/* Menu */
+
+
+.menu-container {
+  height: 100vh !important;
+  background-image: url('assets/images/restaurant-chef-B.jpg') !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  width: 100% !important;
+}
+
+.menu-img {
+  box-shadow: var(--shadow-3);
+  transform: scale(85%) !important;
+  margin: -3rem 0 0 0 !important;
+}
+
+.menu-img-2 {
+  box-shadow: var(--shadow-3);
+  transform: scale(75%) !important;
+  margin: -3rem 0 0 0 !important;
+}
+
+@media screen and (max-width: 1200px) {
+  .menu-img {
+    transform: scale(95%) !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .menu-img {
+    transform: scale(115%) !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .menu-img-2 {
+    transform: scale(95%) !important;
+  }
 }
