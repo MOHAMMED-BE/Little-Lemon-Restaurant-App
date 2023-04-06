@@ -2,6 +2,7 @@
   --shadow: 0 0.1rem 1.5rem 0 rgb(22 39 86 / 10%);
   --shadow-2: rgb(0 17 51 / 7%) 0px 3px 15px;
   --shadow-3: 0 0.3rem 1.8rem 0 rgb(22 39 86 / 40%);
+  --light-shadow : 0 0.1rem 1.5rem 0 rgb(255 255 255 / 50%);
   --radius: 5px;
   --varela-font: "Varela Round", sans-serif !important;
   --karla-font: 'Karla', sans-serif !important;
@@ -41,6 +42,12 @@
 .specials-card-img-top,
 .menu-img{
   box-shadow: var(--shadow-3) !important;
+}
+
+.reservations-card,
+.menu-img,
+.menu-img-2{
+  box-shadow: var(--light-shadow);
 }
 
 .app {
@@ -207,6 +214,7 @@
 .reservations-card {
   width: 27% !important;
   border-radius: var(--border-radius-img) !important;
+  box-shadow: var(--light-shadow);
   transform: scale(90%);
 }
 

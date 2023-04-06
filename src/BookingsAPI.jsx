@@ -17,7 +17,7 @@ export function fetchAPI(date) {
     if (random() <= 1) {
       result.push(i + ":00");
     }
-   
+
   }
   return result;
 }

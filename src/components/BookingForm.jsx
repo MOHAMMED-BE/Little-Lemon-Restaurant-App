@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
-// import image from '../assets/images/greek-salad.jpg';
-// import image from '../assets/images/online-booking.jpg';
 import image from '../assets/images/online-booking-1.png';
 import Occasions from '../data/Occasions';
 import * as yup from "yup";
@@ -15,38 +13,49 @@ const BookingForm = (props) => {
   const navigate = useNavigate();
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
+  const [initalTime, setinItalTime] = useState(
+    props.availableTimes.map((times) => <option key={times}>{times}</option>)
+  );
+  const [finalTime, setFinalTime] = useState(
+    props.availableTimes.map((times) => <option key={times}>{times}</option>)
+  );
+  const [isTimeSelected, setIsTimeSelected] = useState(true);
   const ariaLabel = 'Reserve Table';
   const MySwal = withReactContent(Swal);
-
   const occasionOptions = Occasions.map((option) => option.name);
 
   const validationSchema = yup.object({
-    firstName: yup.string().required("First Name is required"),
-    lastName: yup.string().required("Last Name is required"),
+    fullname: yup.string().required("Please enter your Full Name"),
     numberGuests: yup.number().min(1, 'Must be at least 1 guest').max(10, 'Must be at most 10 guests').required('Number Of Guests is required'),
     occasion: yup.string().oneOf(occasionOptions, "Invalid option").required("Invalid option"),
   });
 
-  const [finalTime, setFinalTime] = useState(
-    props.availableTimes.map((times) => <option key={times}>{times}</option>)
-  );
-
-  function handleDateChange(e) {
+  const handleDateChange = (e) => {
     const selectedDate = e.target.value;
     setDate(selectedDate);
 
     const date = new Date(selectedDate);
-    const filteredTimes = props.availableTimes.filter((t) => t !== time);
+
+    if (isTimeSelected) {
+      setFinalTime(initalTime);
+    } else {
+      const filteredTimes = props.availableTimes.filter((t) => t !== time);
+      setFinalTime(filteredTimes.map((times) => <option key={times}>{times}</option>));
+    }
 
     props.updateTimes(date);
-
-    setFinalTime(filteredTimes.map((times) => <option key={times}>{times}</option>));
   }
+
+  const handleTimeChange = (e) => {
+    setTime(e.target.value);
+    setIsTimeSelected(!isTimeSelected);
+  };
+
+  console.log(isTimeSelected)
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
+      fullname: "",
       numberGuests: "",
       occasion: "",
     },
@@ -96,58 +105,33 @@ const BookingForm = (props) => {
             <div className="card-body mt-3 d-flex justify-content-center align-items-center">
               <form onSubmit={handleSubmit}>
                 <div className="container">
-                  <div className="row">
+                  <div className="row mb-2">
                     <div className="col-md-12">
                       <label htmlFor="" className="form-label">
-                        First Name
+                        Full Name
                       </label>
-
                       <input
                         type="text"
-                        id="firstName"
-                        name="firstName"
-                        placeholder="First Name"
+                        id="fullname"
+                        required
+                        name="fullname"
+                        placeholder="Full Name"
                         className={
-                          touched.firstName && errors.firstName
+                          touched.fullname && errors.fullname
                             ? "form-control is-invalid"
                             : "form-control mb-2"
                         }
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.firstName}
+                        value={values.fullname}
                       />
-                      {touched.firstName && errors.firstName ? (
-                        <div className="invalid-feedback">{errors.firstName}</div>
-                      ) : null}
-                    </div>
-
-                    <div className="col-md-12">
-                      <label htmlFor="" className="form-label">
-                        Last Name
-                      </label>
-                      <input
-                        className={`
-                          ${touched.lastName && errors.lastName
-                            ? 'form-control is-invalid'
-                            : 'form-control'
-                          }
-                        `}
-                        type="text"
-                        required
-                        value={values.lastName}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        name="lastName"
-                        id=""
-                        placeholder="Last Name"
-                      />
-                      {touched.lastName && errors.lastName ? (
-                        <div className="invalid-feedback">{errors.lastName}</div>
+                      {touched.fullname && errors.fullname ? (
+                        <div className="invalid-feedback">{errors.fullname}</div>
                       ) : null}
                     </div>
                   </div>
 
-                  <div className="row mt-2">
+                  <div className="row mb-2">
                     <div className="col-6">
                       <label htmlFor="" className="form-label">
                         Choose date
@@ -160,6 +144,8 @@ const BookingForm = (props) => {
                         name="date"
                         id=""
                         min={new Date().toISOString().split('T')[0]}
+                        required
+                        disabled={!time}
                       />
                     </div>
                     <div className="col-6">
@@ -171,13 +157,13 @@ const BookingForm = (props) => {
                         id="time"
                         name="time"
                         value={time}
-                        onChange={(e) => setTime(e.target.value)}
+                        onChange={handleTimeChange}
                         required
                       >
                         <option value="" disabled>
                           Choose time
                         </option>
-                        {finalTime}
+                        {!isTimeSelected ? finalTime : initalTime}
                       </select>
                     </div>
                   </div>
@@ -233,7 +219,7 @@ const BookingForm = (props) => {
                   </div>
 
                 </div>
-                <div className="row mx-5 d-flex justify-content-center align-items-center">
+                <div className="row mx-5 mt-4 d-flex justify-content-center align-items-center">
                   <Button className='py-2 confirm-btn' ariaLabel={ariaLabel} />
                 </div>
               </form>
