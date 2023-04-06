@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext } from 'react'
 import menuOne from '../assets/images/menu.png'
 import menuTwo from '../assets/images/menu-2.png'
-
+import { WindowWidthContext } from '../context/WindowWidthProvider'
 const Menu = () => {
 
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const windowWidth = useContext(WindowWidthContext)
 
   return (
     <div className='menu-container'>
@@ -23,8 +17,6 @@ const Menu = () => {
           </div>
         </div>
       </div>
-
-
     </div>
   )
 }

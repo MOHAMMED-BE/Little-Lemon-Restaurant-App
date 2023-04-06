@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
-import image from '../assets/images/greek-salad.jpg';
+// import image from '../assets/images/greek-salad.jpg';
+// import image from '../assets/images/online-booking.jpg';
+import image from '../assets/images/online-booking-1.png';
 import Occasions from '../data/Occasions';
 import * as yup from "yup";
 import { useFormik } from "formik";

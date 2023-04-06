@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
 import SpecialsList from '../data/SpecialsList'
+import { WindowWidthContext } from '../context/WindowWidthProvider'
 
 const Specials = () => {
 
     const navigate = useNavigate();
     const ariaLabel = "Online Menu";
     const cardAriaLabel = "Order a delivery";
-
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        const handleResize = () => setWindowWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
+    const windowWidth = useContext(WindowWidthContext)
 
     const showMenu = () => {
         navigate('/menu');
