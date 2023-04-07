@@ -1,6 +1,6 @@
 import React from 'react'
-import HeroSection from './HeroSection'
-import Specials from './Specials'
+import HeroSection from '../sections/HeroSection'
+import Specials from '../sections/Specials'
 import Footer from './Footer';
 
 const Home = () => {

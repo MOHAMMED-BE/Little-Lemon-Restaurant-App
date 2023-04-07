@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from "../assets/svg/Logo.svg";
+import logo from "../assets/images/Logo.svg";
 import navItems from '../data/NavItems';
 
 const Header = () => {
@@ -14,7 +14,7 @@ const Header = () => {
     };
 
     return (
-        <div className='header-nav w-100 d-flex justify-content-center align-items-center'>
+        <header className='header-nav w-100 d-flex justify-content-center align-items-center'>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
                     <div className="navbar-brand">
@@ -48,7 +48,7 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-        </div>
+        </header>
     )
 }
 

@@ -1,10 +1,8 @@
 :root {
-  --shadow: 0 0.1rem 1.5rem 0 rgb(22 39 86 / 10%);
   --shadow-2: rgb(0 17 51 / 7%) 0px 3px 15px;
   --shadow-3: 0 0.3rem 1.8rem 0 rgb(22 39 86 / 40%);
-  --light-shadow : 0 0.1rem 1.5rem 0 rgb(255 255 255 / 50%);
+  --light-shadow: 0 0.1rem 1.5rem 0 rgb(255 255 255 / 50%);
   --radius: 5px;
-  --varela-font: "Varela Round", sans-serif !important;
   --karla-font: 'Karla', sans-serif !important;
   --markazi-font: 'Markazi Text', serif !important;
   --green: #495E57;
@@ -18,11 +16,6 @@
 }
 
 @font-face {
-  font-family: 'Varela Round';
-  src: url(assets/fonts/VarelaRound-Regular.ttf);
-}
-
-@font-face {
   font-family: 'Karla';
   src: url(assets/fonts/Karla-Regular.ttf);
 }
@@ -32,26 +25,32 @@
   src: url(assets/fonts/MarkaziText-Medium.ttf);
 }
 
-*{
+* {
   transition: var(--transition) !important;
+}
+
+h2,
+h3 {
+  font-family: var(--markazi-font) !important;
+
 }
 
 .hero-image,
 .reserve-image,
 .specials-image,
 .specials-card-img-top,
-.menu-img{
+.menu-img {
   box-shadow: var(--shadow-3) !important;
 }
 
 .reservations-card,
 .menu-img,
-.menu-img-2{
+.menu-img-2 {
   box-shadow: var(--light-shadow);
 }
 
 .app {
-  font-family: var(--varela-font);
+  font-family: var(--karla-font);
 }
 
 .header-nav {
@@ -84,7 +83,7 @@
     width: 20rem !important;
     margin: 0.5rem 0 0 0 !important;
     cursor: pointer;
-    
+
   }
 
   .nav-item:hover {
@@ -111,7 +110,7 @@
 .login-btn {
   border: 2px solid var(--green) !important;
   color: var(--dark) !important;
-  
+
 }
 
 .login-btn:hover {
@@ -153,7 +152,7 @@
 .reserve-btn {
   background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  
+
 }
 
 .reserve-btn:hover {
@@ -226,7 +225,7 @@
 .confirm-btn {
   background-color: var(--yellow) !important;
   color: var(--dark) !important;
-  
+
 }
 
 .confirm-btn:hover {
@@ -286,7 +285,7 @@
   border-radius: 10px !important;
   border: none !important;
   height: 37rem !important;
-  
+
   margin-bottom: 3rem !important;
 }
 
@@ -305,7 +304,7 @@
 .online-menu-btn {
   background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  
+
 }
 
 .online-menu-btn:hover {
@@ -321,7 +320,7 @@
 .order-btn {
   background-color: var(--yellow) !important;
   padding: 10px 20px !important;
-  
+
 }
 
 .online-menu-btn {
@@ -439,7 +438,6 @@
 
 footer {
   background-color: var(--green) !important;
-  
 }
 
 .footer-logo {

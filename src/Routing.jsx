@@ -1,12 +1,12 @@
 import React from 'react';
 import Header from './components/Header';
-import Menu from './components/Menu';
-import OnlineOrder from './components/OnlineOrder';
+import Menu from './pages/Menu';
+import OnlineOrder from './pages/OnlineOrder';
 import Reservations from './components/Reservations';
-import About from './components/About';
+import About from './pages/About';
 import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const Routing = () => {

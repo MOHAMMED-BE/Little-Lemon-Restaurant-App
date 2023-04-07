@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react'
 import BookingForm from './BookingForm';
-import { fetchAPI,submitAPI } from '../BookingsAPI';
+import { fetchAPI, submitAPI } from '../BookingsAPI';
 
 const Reservations = () => {
 
@@ -8,7 +8,7 @@ const Reservations = () => {
         return fetchAPI(date);
     }
 
-    function submitForm(formData){
+    function submitForm(formData) {
         return submitAPI(formData);
     }
     const output = fetchAPI(new Date());

@@ -3,7 +3,6 @@ import BookingForm from './components/BookingForm';
 import { initializeTimes, updateTimes } from './components/Reservations'
 
 
-
 // Test 1: Test for some static text being rendered in the BookingForm component
 
 test('Renders the BookingForm label', () => {

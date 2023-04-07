@@ -1,6 +1,6 @@
-import Bruchetta from '../assets/images/food/bruschetta.jpeg';
-import GreekSalad from '../assets/images/food/greek-salad.jpg';
-import LemonDesert from '../assets/images/food/lemon-dessert.jpg';
+import Bruchetta from '../assets/images/bruschetta.jpeg';
+import GreekSalad from '../assets/images/greek-salad.jpg';
+import LemonDesert from '../assets/images/lemon-dessert.jpg';
 
 
 const SpecialsList = [

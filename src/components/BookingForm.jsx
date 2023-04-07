@@ -51,8 +51,6 @@ const BookingForm = (props) => {
     setIsTimeSelected(!isTimeSelected);
   };
 
-  console.log(isTimeSelected)
-
   const formik = useFormik({
     initialValues: {
       fullname: "",
