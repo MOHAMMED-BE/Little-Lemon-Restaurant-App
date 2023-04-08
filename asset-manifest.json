@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Little-Lemon-Restaurant-App/static/css/main.89f51acc.css",
-    "main.js": "/Little-Lemon-Restaurant-App/static/js/main.75f51461.js",
+    "main.js": "/Little-Lemon-Restaurant-App/static/js/main.d79b7aca.js",
     "static/js/787.e6f16f2b.chunk.js": "/Little-Lemon-Restaurant-App/static/js/787.e6f16f2b.chunk.js",
     "static/media/greek-salad.jpg": "/Little-Lemon-Restaurant-App/static/media/greek-salad.f866af357f89a1a10674.jpg",
     "static/media/restaurant-chef-B.jpg": "/Little-Lemon-Restaurant-App/static/media/restaurant-chef-B.4b4c2d26b514db32e8fc.jpg",
@@ -22,11 +22,11 @@
     "static/media/footer-logo.png": "/Little-Lemon-Restaurant-App/static/media/footer-logo.4470f9c9e815da98dbb3.png",
     "index.html": "/Little-Lemon-Restaurant-App/index.html",
     "main.89f51acc.css.map": "/Little-Lemon-Restaurant-App/static/css/main.89f51acc.css.map",
-    "main.75f51461.js.map": "/Little-Lemon-Restaurant-App/static/js/main.75f51461.js.map",
+    "main.d79b7aca.js.map": "/Little-Lemon-Restaurant-App/static/js/main.d79b7aca.js.map",
     "787.e6f16f2b.chunk.js.map": "/Little-Lemon-Restaurant-App/static/js/787.e6f16f2b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.89f51acc.css",
-    "static/js/main.75f51461.js"
+    "static/js/main.d79b7aca.js"
   ]
 }
