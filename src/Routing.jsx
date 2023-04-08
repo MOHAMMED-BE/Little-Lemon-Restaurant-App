@@ -12,11 +12,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 const Routing = () => {
 
   return (
-    <>
-      <Router>
+      <Router basename="/Little-Lemon-Restaurant-App">
         <Header/>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/reservations" element={<Reservations />} />
@@ -25,7 +24,6 @@ const Routing = () => {
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
-    </>
   );
 };
 
