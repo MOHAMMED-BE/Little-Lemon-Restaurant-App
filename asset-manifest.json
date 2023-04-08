@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/Little-Lemon-Restaurant-App/static/css/main.89f51acc.css",
+    "main.js": "/Little-Lemon-Restaurant-App/static/js/main.75f51461.js",
+    "static/js/787.e6f16f2b.chunk.js": "/Little-Lemon-Restaurant-App/static/js/787.e6f16f2b.chunk.js",
+    "static/media/greek-salad.jpg": "/Little-Lemon-Restaurant-App/static/media/greek-salad.f866af357f89a1a10674.jpg",
+    "static/media/restaurant-chef-B.jpg": "/Little-Lemon-Restaurant-App/static/media/restaurant-chef-B.4b4c2d26b514db32e8fc.jpg",
+    "static/media/menu-2.png": "/Little-Lemon-Restaurant-App/static/media/menu-2.597e28df153c938bfacb.png",
+    "static/media/online-booking-1.png": "/Little-Lemon-Restaurant-App/static/media/online-booking-1.322e4e5712804c688075.png",
+    "static/media/menu.png": "/Little-Lemon-Restaurant-App/static/media/menu.1af061b1374009cd7a2b.png",
+    "static/media/restauranfood.png": "/Little-Lemon-Restaurant-App/static/media/restauranfood.ffa1db0e6259399b1a59.png",
+    "static/media/bruschetta.jpeg": "/Little-Lemon-Restaurant-App/static/media/bruschetta.b0415dd9cd625aa27e44.jpeg",
+    "static/media/about-page-1.png": "/Little-Lemon-Restaurant-App/static/media/about-page-1.934970b1b769a7659de1.png",
+    "static/media/restaurant.jpg": "/Little-Lemon-Restaurant-App/static/media/restaurant.324d0f99bdf19400a0f7.jpg",
+    "static/media/online-order-2.png": "/Little-Lemon-Restaurant-App/static/media/online-order-2.8a9d675bd6fc3d33c48e.png",
+    "static/media/online-order-1.png": "/Little-Lemon-Restaurant-App/static/media/online-order-1.851a490967e85945544e.png",
+    "static/media/login-img-3.jpg": "/Little-Lemon-Restaurant-App/static/media/login-img-3.4f16134b1369554613f9.jpg",
+    "static/media/MarkaziText-Medium.ttf": "/Little-Lemon-Restaurant-App/static/media/MarkaziText-Medium.f1cafea47732a2834f4a.ttf",
+    "static/media/about-page-2.png": "/Little-Lemon-Restaurant-App/static/media/about-page-2.3844463969e0d20726e2.png",
+    "static/media/Logo.svg": "/Little-Lemon-Restaurant-App/static/media/Logo.6c132dfefa69396bba43f72aa595e62f.svg",
+    "static/media/Karla-Regular.ttf": "/Little-Lemon-Restaurant-App/static/media/Karla-Regular.fa3a282cea1a68f3717d.ttf",
+    "static/media/footer-logo.png": "/Little-Lemon-Restaurant-App/static/media/footer-logo.4470f9c9e815da98dbb3.png",
+    "index.html": "/Little-Lemon-Restaurant-App/index.html",
+    "main.89f51acc.css.map": "/Little-Lemon-Restaurant-App/static/css/main.89f51acc.css.map",
+    "main.75f51461.js.map": "/Little-Lemon-Restaurant-App/static/js/main.75f51461.js.map",
+    "787.e6f16f2b.chunk.js.map": "/Little-Lemon-Restaurant-App/static/js/787.e6f16f2b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89f51acc.css",
+    "static/js/main.75f51461.js"
+  ]
+}
