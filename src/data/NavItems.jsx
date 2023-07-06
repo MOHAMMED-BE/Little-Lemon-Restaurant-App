@@ -3,7 +3,6 @@ const navItems = [
     { name: 'Menu' },
     { name: 'Reservations' },
     { name: 'Online Order' },
-    { name: 'News' }
 ];
 
 export default navItems;
